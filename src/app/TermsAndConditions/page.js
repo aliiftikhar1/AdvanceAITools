@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-import Header from "../components/Header";
-import SidebarHeader from "../components/sidebarHeader";
-import { useMediaQuery } from "react-responsive";
-import Footer from "../components/Footer";
+import React from "react";
 import "../components/styless.css"
 import UserLayout from "../UserLayout";
 
