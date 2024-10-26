@@ -1,50 +1,56 @@
 import fs from 'fs';
 import path from 'path';
-import { NextResponse } from 'next/server';
 
-export async function POST(request) {
+export default function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Only POST requests allowed' });
+  }
+
+  // Define the path to the cartoon_output.mp4
   const cartoonOutputPath = path.join(process.cwd(), 'public', 'cartoon_output.mp4');
+  
+  // Define the path to the frames directory
   const framesDirectory = path.join(process.cwd(), 'python-scripts', 'frames');
 
-  // Helper function to delete a file
-  const deleteFile = (filePath) => {
-    return new Promise((resolve, reject) => {
-      fs.unlink(filePath, (err) => {
-        if (err) reject(err);
-        else resolve();
-      });
-    });
-  };
-
-  try {
-    // Delete cartoon_output.mp4 if it exists
-    if (fs.existsSync(cartoonOutputPath)) {
-      await deleteFile(cartoonOutputPath);
+  // Check if cartoon_output.mp4 exists and delete it if found
+  if (fs.existsSync(cartoonOutputPath)) {
+    fs.unlink(cartoonOutputPath, (err) => {
+      if (err) {
+        console.error('Error deleting cartoon_output.mp4:', err);
+        return res.status(500).json({ message: 'Error deleting cartoon_output.mp4' });
+      }
       console.log('cartoon_output.mp4 deleted successfully.');
-    } else {
-      console.log('cartoon_output.mp4 not found.');
-    }
+    });
+  } else {
+    console.log('cartoon_output.mp4 not found.');
+  }
 
-    // Delete all files in the frames directory if it exists
-    if (fs.existsSync(framesDirectory)) {
-      const files = fs.readdirSync(framesDirectory);
-      await Promise.all(
-        files.map(async (file) => {
-          const filePath = path.join(framesDirectory, file);
-          if (fs.existsSync(filePath)) {
-            await deleteFile(filePath);
-            console.log(`File ${file} deleted successfully.`);
-          }
-        })
-      );
+  // Check if frames directory exists and delete files inside it if found
+  if (fs.existsSync(framesDirectory)) {
+    fs.readdir(framesDirectory, (err, files) => {
+      if (err) {
+        console.error('Error reading frames directory:', err);
+        return res.status(500).json({ message: 'Error reading frames directory' });
+      }
+
+      files.forEach((file) => {
+        const filePath = path.join(framesDirectory, file);
+        if (fs.existsSync(filePath)) {
+          fs.unlink(filePath, (err) => {
+            if (err) {
+              console.error(`Error deleting file ${file}:`, err);
+            } else {
+              console.log(`File ${file} deleted successfully.`);
+            }
+          });
+        }
+      });
+
       console.log('All frames deleted successfully.');
-      return NextResponse.json({ message: 'Files deleted successfully' });
-    } else {
-      console.log('Frames directory not found.');
-      return NextResponse.json({ message: 'Frames directory not found' }, { status: 404 });
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    return NextResponse.json({ message: 'Error deleting files' }, { status: 500 });
+      res.status(200).json({ message: 'Files deleted successfully' });
+    });
+  } else {
+    console.log('Frames directory not found.');
+    return res.status(404).json({ message: 'Frames directory not found' });
   }
 }
