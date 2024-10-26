@@ -1,0 +1,50 @@
+{
+  "name": "news-anchor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@aws-sdk/client-polly": "^3.670.0",
+    "@emotion/cache": "^11.13.1",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.4",
+    "@mui/material": "^6.1.4",
+    "@mui/material-nextjs": "^6.1.4",
+    "@prisma/client": "^5.20.0",
+    "aws-sdk": "^2.1691.0",
+    "axios": "^1.7.7",
+    "formidable": "^3.5.1",
+    "framer-motion": "^11.11.9",
+    "fs": "^0.0.1-security",
+    "jodit-react": "^4.1.2",
+    "news-anchor": "file:",
+    "next": "14.2.13",
+    "next-redux-wrapper": "^8.1.0",
+    "path": "^0.12.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.3.0",
+    "react-multi-carousel": "^2.8.5",
+    "react-responsive": "^10.0.0",
+    "react-router-dom": "^6.27.0",
+    "react-table": "^7.8.0",
+    "react-toastify": "^10.0.6",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.7",
+    "@types/react": "^18.3.11",
+    "postcss": "^8",
+    "prisma": "^5.20.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.6.3"
+  }
+}

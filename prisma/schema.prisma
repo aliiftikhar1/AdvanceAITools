@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Avatar {
+  id              Int      @id @default(autoincrement())
+  avatarName      String
+  avatarPath      String
+  avatarImagePath String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
