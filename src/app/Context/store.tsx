@@ -101,7 +101,7 @@ export const GlobalContextProvider = ({ children }) => {
     setRoleState('');
     setPackageIdState('');
     setIsLang('eng'); // Reset language to default
-    setIsAuthenticated(false); // Corrected camel case and logic
+    setIsAuthenticated("false"); // Corrected camel case and logic
 
     // Clear all values from localStorage
     localStorage.removeItem('userId');
