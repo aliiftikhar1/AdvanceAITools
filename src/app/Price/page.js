@@ -24,7 +24,7 @@ const Price = () => {
   // Fetch text-to-speech packages
   const fetchTtsPackages = async () => {
     try {
-      const response = await axios.get("https://advanceaitool.com/api/get_packages(tts).php");
+      const response = await axios.get("https://aitools.pkstockhelper.info/api/get_packages(tts).php");
       setTtsPackages(response.data);
       setLoadingPackages(false);
     } catch (err) {
@@ -37,7 +37,7 @@ const Price = () => {
   // Fetch video-to-cartoon packages
   const fetchVtcPackages = async () => {
     try {
-      const response = await axios.get("https://advanceaitool.com/api/get_packages(vtc).php");
+      const response = await axios.get("https://aitools.pkstockhelper.info/api/get_packages(vtc).php");
       setVtcPackages(response.data);
       setLoadingPackages(false);
     } catch (err) {

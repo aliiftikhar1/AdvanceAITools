@@ -64,7 +64,7 @@
 //     formdata.append('uid', userId);
 //     try {
 //       const response = await axios.post(
-//         "https://advanceaitool.com/api/get_subscriptionbyuserid(vtc).php", formdata
+//         "https://aitools.pkstockhelper.info/api/get_subscriptionbyuserid(vtc).php", formdata
 //       );
 
 //       if (response.data.status === "success") {
@@ -94,7 +94,7 @@
 //           updateFormData.append('Credits', newcredits); // Send the number of used characters
 
 //           const response = await axios.post(
-//             "https://advanceaitool.com/api/updatesubscriptionsbyuserid(vtc).php",
+//             "https://aitools.pkstockhelper.info/api/updatesubscriptionsbyuserid(vtc).php",
 //             updateFormData
 //           );
 

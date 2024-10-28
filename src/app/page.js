@@ -216,7 +216,7 @@ const Home = () => {
           updateFormData.append('characters', charactersUsed); // Send the number of used characters
 
           const response = await axios.post(
-            "https://advanceaitool.com/api/updatesubscriptionsbyuserid(tts).php",
+            "https://aitools.pkstockhelper.info/api/updatesubscriptionsbyuserid(tts).php",
             updateFormData
           );
 
@@ -262,7 +262,7 @@ const Home = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const response = await axios.get("https://advanceaitool.com/api/get_packages.php");
+        const response = await axios.get("https://aitools.pkstockhelper.info/api/get_packages.php");
         setPackages(response.data);
         console.log(
           "All Packages are : ", response.data
@@ -286,7 +286,7 @@ const Home = () => {
     formdata.append('uid', userId);
     try {
       const response = await axios.post(
-        "https://advanceaitool.com/api/get_subscriptionbyuserid(tts).php", formdata
+        "https://aitools.pkstockhelper.info/api/get_subscriptionbyuserid(tts).php", formdata
       );
 
       if (response.data.status === "success") {

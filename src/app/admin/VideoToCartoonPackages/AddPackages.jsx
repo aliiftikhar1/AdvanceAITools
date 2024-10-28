@@ -58,7 +58,7 @@ const VideoToCartoonPackages = () => {
   // Fetch all packages
   const fetchPackages = async () => {
     try {
-      const response = await axios.get(`https://advanceaitool.com/api/get_packages(vtc).php`);
+      const response = await axios.get(`https://aitools.pkstockhelper.info/api/get_packages(vtc).php`);
       setPackages(response.data);
     } catch (error) {
       console.error("Error fetching packages:", error);
@@ -141,7 +141,7 @@ const VideoToCartoonPackages = () => {
       newPackage.append("Price", formData.Price);
       newPackage.append("Features", formData.Features);  // Append Features field
 
-      const response = await axios.post(`https://advanceaitool.com/api/savevideotocartoonpackages.php`, newPackage, {
+      const response = await axios.post(`https://aitools.pkstockhelper.info/api/savevideotocartoonpackages.php`, newPackage, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -189,7 +189,7 @@ const VideoToCartoonPackages = () => {
       updatedPackage.append("id", editingPackage.id);
       updatedPackage.append("Features", formData.Features);  // Append Features field
 
-      await axios.post(`https://advanceaitool.com/api/savevideotocartoonpackages.php`, updatedPackage, {
+      await axios.post(`https://aitools.pkstockhelper.info/api/savevideotocartoonpackages.php`, updatedPackage, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -215,7 +215,7 @@ const VideoToCartoonPackages = () => {
     try {
       const formdata = new FormData();
       formdata.append('id', id);
-      await axios.post(`https://advanceaitool.com/api/delete_packages(vtc).php`, formdata);
+      await axios.post(`https://aitools.pkstockhelper.info/api/delete_packages(vtc).php`, formdata);
       setSnackbar({
         open: true,
         message: "Package deleted successfully.",

@@ -56,7 +56,7 @@ const AddRecord = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await axios.get("https://advanceaitool.com/api/get_subscriptipons.php");
+      const response = await axios.get("https://aitools.pkstockhelper.info/api/get_subscriptipons.php");
       setRecords(response.data);
       setFilteredRecords(response.data);
     } catch (error) {
@@ -124,7 +124,7 @@ const AddRecord = () => {
     }
 
     try {
-      const response = await axios.post(`https://advanceaitool.com/api/subscriptions.php`, formData);
+      const response = await axios.post(`https://aitools.pkstockhelper.info/api/subscriptions.php`, formData);
       setSnackbar({
         open: true,
         message: "Record added successfully.",
@@ -174,7 +174,7 @@ const AddRecord = () => {
     }
 
     try {
-      await axios.put(`https://advanceaitool.com/api/subscriptions.php/${editingRecord.id}`, formData);
+      await axios.put(`https://aitools.pkstockhelper.info/api/subscriptions.php/${editingRecord.id}`, formData);
       setSnackbar({
         open: true,
         message: "Record updated successfully.",
@@ -203,7 +203,7 @@ const AddRecord = () => {
       console.log("Id to be deleted", deletedata);
   
       // Use POST to send the delete request with FormData
-      const deleteresponse = await axios.post("https://advanceaitool.com/api/delete_subscription.php", deletedata);
+      const deleteresponse = await axios.post("https://aitools.pkstockhelper.info/api/delete_subscription.php", deletedata);
   
       console.log("Delete response", deleteresponse);
   

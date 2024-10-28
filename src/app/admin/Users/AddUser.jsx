@@ -60,7 +60,7 @@ const Users = () => {
 
   const fetchAdminUsers = async () => {
     try {
-      const response = await axios.get("https://advanceaitool.com/api/get_users.php");
+      const response = await axios.get("https://aitools.pkstockhelper.info/api/get_users.php");
       setAdminUsers(response.data);
       console.log("All users: ", response.data);
     } catch (error) {
@@ -148,7 +148,7 @@ const Users = () => {
       form.append("role", role);
       form.append("status", status);
 
-      const response = await axios.post("https://advanceaitool.com/api/signup.php", form, {
+      const response = await axios.post("https://aitools.pkstockhelper.info/api/signup.php", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -209,7 +209,7 @@ const Users = () => {
       form.append("role", role);
       form.append("status", status);
 
-      const response = await axios.put("https://advanceaitool.com/api/signup.php", form, {
+      const response = await axios.put("https://aitools.pkstockhelper.info/api/signup.php", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -243,7 +243,7 @@ const Users = () => {
       const deleteuser = new FormData();
       deleteuser.append("id", id);
       console.log("User to be deleted: ", id);
-      await axios.post("https://advanceaitool.com/api/delete_user.php", deleteuser, {
+      await axios.post("https://aitools.pkstockhelper.info/api/delete_user.php", deleteuser, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setSnackbar({

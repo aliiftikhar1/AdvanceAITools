@@ -35,7 +35,7 @@ export default function NewsAnchor() {
           updateFormData.append('characters', charactersUsed); // Send the number of used characters
 
           const response = await axios.post(
-            "https://advanceaitool.com/api/updatesubscriptionsbyuserid(tts).php",
+            "https://aitools.pkstockhelper.info/api/updatesubscriptionsbyuserid(tts).php",
             updateFormData
           );
 
@@ -80,7 +80,7 @@ export default function NewsAnchor() {
     formdata.append('uid', userId);
     try {
       const response = await axios.post(
-        "https://advanceaitool.com/api/get_subscriptionbyuserid(tts).php", formdata
+        "https://aitools.pkstockhelper.info/api/get_subscriptionbyuserid(tts).php", formdata
       );
 
       if (response.data.status === "success") {

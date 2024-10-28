@@ -58,7 +58,7 @@ const TextToSpeechPackages = () => {
   // Fetch all packages
   const fetchPackages = async () => {
     try {
-      const response = await axios.get(`https://advanceaitool.com/api/get_packages(tts).php`);
+      const response = await axios.get(`https://aitools.pkstockhelper.info/api/get_packages(tts).php`);
       setPackages(response.data);
     } catch (error) {
       console.error("Error fetching packages:", error);
@@ -137,7 +137,7 @@ const TextToSpeechPackages = () => {
       newPackage.append("Features", formData.Features);
 
       // Call the API to add a new package
-      const response = await axios.post(`https://advanceaitool.com/api/savetexttospeechpackages.php`, newPackage, {
+      const response = await axios.post(`https://aitools.pkstockhelper.info/api/savetexttospeechpackages.php`, newPackage, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -186,7 +186,7 @@ const TextToSpeechPackages = () => {
       updatedPackage.append("id", editingPackage.id);
       updatedPackage.append("Features", formData.Features);
 
-      await axios.post(`https://advanceaitool.com/api/savetexttospeechpackages.php`, updatedPackage, {
+      await axios.post(`https://aitools.pkstockhelper.info/api/savetexttospeechpackages.php`, updatedPackage, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -212,7 +212,7 @@ const TextToSpeechPackages = () => {
     try {
       const formdata = new FormData();
       formdata.append('id', id);
-      await axios.post(`https://advanceaitool.com/api/delete_packages(tts).php`, formdata);
+      await axios.post(`https://aitools.pkstockhelper.info/api/delete_packages(tts).php`, formdata);
       setSnackbar({
         open: true,
         message: "Package deleted successfully.",

@@ -181,7 +181,7 @@ const Header = () => {
         // API request to sign up the user
         console.log("Sending signup request...");
         const response = await axios.post(
-          "https://advanceaitool.com/api/signup.php",
+          "https://aitools.pkstockhelper.info/api/signup.php",
           signupdata
         );
 
@@ -197,7 +197,7 @@ const Header = () => {
           emailData.append('subject', 'Verify your email');
 
           // Construct the verification URL and email HTML content
-          const verificationUrl = `https://advanceaitool.com/api/developeremailverification.php?email=${email}`;
+          const verificationUrl = `https://aitools.pkstockhelper.info/api/developeremailverification.php?email=${email}`;
           const message = `
             <h1>Email Verification</h1>
             <p>Please verify your email by clicking the button below:</p>
@@ -214,7 +214,7 @@ const Header = () => {
           // Send the verification email
           console.log("Sending verification email...");
           const emailResponse = await axios.post(
-            "https://advanceaitool.com/api/desingersendemail.php",
+            "https://aitools.pkstockhelper.info/api/desingersendemail.php",
             emailData
           );
 
@@ -260,7 +260,7 @@ const Header = () => {
 
         // API request for login
         const response = await axios.post(
-          "https://advanceaitool.com/api/login.php",
+          "https://aitools.pkstockhelper.info/api/login.php",
           logindata
         );
         const loginfetcheddata = response.data.data;

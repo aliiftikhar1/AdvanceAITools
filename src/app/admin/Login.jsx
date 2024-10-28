@@ -38,7 +38,7 @@ const AdminLogin = () => {
 
         // API request for login
         const response = await axios.post(
-          "https://advanceaitool.com/api/login.php",
+          "https://aitools.pkstockhelper.info/api/login.php",
           logindata
         );
         console.log("API response:", response.data);

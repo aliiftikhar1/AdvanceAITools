@@ -51,7 +51,7 @@ const Packages = () => {
   // Fetch all packages
   const fetchReviews = async () => {
     try {
-      const response = await axios.get(`https://advanceaitool.com/api/get_packages.php`);
+      const response = await axios.get(`https://aitools.pkstockhelper.info/api/get_packages.php`);
       setReviews(response.data);
     } catch (error) {
       console.error("Error fetching packages:", error);
@@ -128,7 +128,7 @@ const handleAddSubmit = async (e) => {
     newPackage.append("characters", formData.characters);
 
     // Call the API to add a new package
-    const response = await axios.post(`https://advanceaitool.com/api/packages.php`, newPackage, {
+    const response = await axios.post(`https://aitools.pkstockhelper.info/api/packages.php`, newPackage, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
@@ -177,7 +177,7 @@ const handleAddSubmit = async (e) => {
       updatedPackage.append("characters", formData.characters);
       updatedPackage.append("id", editingReview.id); // Assuming 'id' is needed for updating
 
-      await axios.post(`https://advanceaitool.com/api/packages.php`, updatedPackage, {
+      await axios.post(`https://aitools.pkstockhelper.info/api/packages.php`, updatedPackage, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -203,7 +203,7 @@ const handleAddSubmit = async (e) => {
     try {
       const formdata = new FormData();
       formdata.append('id',id);
-      await axios.post(`https://advanceaitool.com/api/delete_packages.php`, formdata );
+      await axios.post(`https://aitools.pkstockhelper.info/api/delete_packages.php`, formdata );
       setSnackbar({
         open: true,
         message: "Package deleted successfully.",
