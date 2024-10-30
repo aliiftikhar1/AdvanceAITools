@@ -21,15 +21,25 @@ def generate_video(text, avatar, voice):
             raise FileNotFoundError(f"Avatar video not found at {avatar_video_path}")
 
         # Generate audio from text using gTTS
-        lang_code = "en" if voice == "Male Voice" else "ur"  # Check voice selection
+        lang_code = "en"  # Use English for both voices
         tts = gTTS(text, lang=lang_code)
 
         # Save the audio as MP3
         output_audio = os.path.join(script_dir, "generated_audio.mp3")
         tts.save(output_audio)
 
-        # Convert the audio from MP3 to WAV
+        # Convert the audio from MP3 to WAV and adjust pitch
         audio = AudioSegment.from_mp3(output_audio)
+
+        # Adjust pitch for male and female voices
+        if voice == "Male Voice":
+            audio = audio._spawn(audio.raw_data, overrides={"frame_rate": int(audio.frame_rate * 0.85)})
+            audio = audio.set_frame_rate(44100)  # Reset to original frame rate
+        elif voice == "Female Voice":
+            audio = audio._spawn(audio.raw_data, overrides={"frame_rate": int(audio.frame_rate * 1.1)})
+            audio = audio.set_frame_rate(44100)  # Reset to original frame rate
+
+        # Export the adjusted audio as WAV
         output_wav_audio = os.path.join(script_dir, "generated_audio.wav")
         audio.export(output_wav_audio, format="wav")
 

@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
     const { email } = req.body;
 
-    // Configure the SMTP transport
+    
     const transporter = nodemailer.createTransport({
         service: 'gmail', 
         auth: {
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         },
     });
 
-    // Email content
+    
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: email,
