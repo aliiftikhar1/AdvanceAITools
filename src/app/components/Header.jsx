@@ -105,6 +105,7 @@ const Header = () => {
   const [openModel, setOpenModel] = useState(false);
   const [google, setGoogle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [message, setmessage] = useState('')
   const { isAuthenticated, setisAuthenticated, isLang, logout, setisLang, userId, setUserId, data, setData, DisplayName, setDisplayName, UserName, setUserName, Role, setRole, PackageId, setPackageId } = useGlobalContext();
 
   // useEffect(()=>{
@@ -151,10 +152,12 @@ const Header = () => {
   const handleOpen = () => {
     setOpenModel(false);
     setOpen(true);
+    setmessage('');
   };
   const handelOpenModel = () => {
     setOpenModel(true);
     setOpen(false);
+    setmessage('');
   };
   const handleClose = () => setOpen(false);
   const handleCloseModel = () => setOpenModel(false);
@@ -190,7 +193,7 @@ const Header = () => {
         // Check if signup was successful
         if (response) {
           console.log("Signup successful, preparing to send verification email...");
-
+          setmessage("User Created!")
           // Prepare email data for sending verification email
           const emailData = new FormData();
           emailData.append('to', email); // Send email to the new user
@@ -220,18 +223,21 @@ const Header = () => {
 
           console.log("Verification email API response:", emailResponse.data);
 
+          setmessage(emailResponse.data.message);
           // Close the modal on successful signup and email sending
           handleCloseModel();
           console.log("Signup process completed and modal closed.");
 
         } else {
           console.error("Signup failed:", response.data.message);
+          setmessage(response.data.message);
         }
       } else {
         console.error("Please fill all the fields");
       }
     } catch (error) {
       console.error("Error during signup:", error.message);
+      setmessage(error.message);
     }
   };
 
@@ -268,6 +274,7 @@ const Header = () => {
 
 
         if (response) {
+          setmessage(response.data.message);
           const { id,fullname, username, role } = response.data.data;
 
           console.log("id",id,"fullname", fullname, "Username", username, "Role", role);
@@ -283,6 +290,7 @@ const Header = () => {
 
         } else {
           console.error("Login failed:", response.data.message);
+          setmessage(response.data.message);
         }
       } else {
         console.error("Please enter both email and password");
@@ -412,6 +420,7 @@ const Header = () => {
               <h3 className="text-2xl font-semibold mb-6 text-gray-800">
                 Login to Your Account
               </h3>
+              <p className="font-semibold mb-6 text-red-500 text-lg">{message}</p>
               <form className="space-y-6">
                 <div className="relative">
                   <input
@@ -453,7 +462,7 @@ const Header = () => {
                   </svg>
                 </div>
                 <div className="flex items-center justify-between">
-                  <label className="flex items-center">
+                  {/* <label className="flex items-center">
                     <input
                       type="checkbox"
                       className="form-checkbox h-5 w-5 text-purple-600"
@@ -461,9 +470,9 @@ const Header = () => {
                     <span className="ml-2 text-sm text-gray-600">
                       Remember me
                     </span>
-                  </label>
+                  </label> */}
                   <a
-                    href="#"
+                    href="/Forgetpassword"
                     className="text-sm text-purple-600 hover:underline"
                   >
                     Forgot password?
@@ -588,7 +597,7 @@ const Header = () => {
                     />
                   </svg>
                 </div>
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                   <input
                     type="checkbox"
                     className="form-checkbox h-5 w-5 text-purple-600"
@@ -596,7 +605,7 @@ const Header = () => {
                   <span className="ml-2 text-sm text-gray-600">
                     I agree to the Terms and Privacy Policy
                   </span>
-                </div>
+                </div> */}
                 <button
                   onClick={handleSignup}
                   type="button"

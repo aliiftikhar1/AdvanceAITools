@@ -6,24 +6,28 @@ export default function ForgotPassword() {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false); // Loading state
 
     const handleForgotPassword = async (e) => {
         e.preventDefault();
         setMessage("");
         setError("");
+        setLoading(true); // Set loading to true while sending email
 
         try {
-            // Example API endpoint for handling password reset
-            const response = await axios.post("https://yourapi.com/api/forgot-password", { email });
-            
-            if (response.data.status === "success") {
-                setMessage("Password reset link has been sent to your email.");
+            // Call the API endpoint for handling password reset
+            const response = await axios.post("/api/forgetpassword", { email });
+
+            if (response.data.status) { // Check if the API response status is true
+                setMessage(response.data.message); // Show success message from API
             } else {
-                setError("Something went wrong. Please try again.");
+                setError(response.data.message || "Something went wrong. Please try again."); // Show error message from API
             }
         } catch (err) {
             setError("Error sending password reset link. Please check the email and try again.");
             console.error("Forgot Password Error:", err);
+        } finally {
+            setLoading(false); // Stop loading after the request is complete
         }
     };
 
@@ -55,8 +59,9 @@ export default function ForgotPassword() {
                     <button 
                         type="submit" 
                         className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 font-semibold"
+                        disabled={loading} // Disable button while loading
                     >
-                        Send Reset Link
+                        {loading ? "Sending..." : "Send Reset Link"}
                     </button>
                 </form>
                 
