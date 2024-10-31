@@ -303,67 +303,69 @@ const Header = () => {
 
   return (
     <>
-        <div className="flex items-center justify-between px-8 py-4 shadow-md h-20 z-50 w-full bg-gradient-to-r from-white via-white to-indigo-400">
-          <div className="flex gap-10 items-center">
+        <div className="flex items-center gap-4 justify-between px-8 py-4 shadow-md h-20 z-50 w-full bg-gradient-to-r from-white via-white to-indigo-400">
+          <div className="flex items-center text-[16px] w-full">
             <img
               src="/assets/resume/logo.png"
               className="cursor-pointer w-[160px] h-[50px] transition-transform transform hover:scale-110 duration-300 ease-in-out"
               alt="Logo"
             />
 
+<div className="flex justify-between w-full ">
             <a
               href="/"
-              className="text-black font-semibold text-[16px] hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
+              className="text-black font-semibold  hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
             >
               Home
             </a>
 
             <a
               href="/"
-              className="text-black font-semibold text-[16px] hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
+              className="text-black font-semibold  hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
             >
               Text to Speech
             </a>
 
             <a
               href="/pages/news-anchor"
-              className="text-black font-semibold text-[16px] hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
+              className="text-black font-semibold  hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
             >
               Text to News Presentation
             </a>
 
             <a
               href="/pages/video-to-cartoon"
-              className="text-black font-semibold text-[16px] hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
+              className="text-black font-semibold  hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
             >
               Video to Cartoon
             </a>
 
             <a
               href="/Price"
-              className="text-black font-semibold text-[16px] hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
+              className="text-black font-semibold  hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
             >
               Pricing
             </a>
 
             <a
               href="/AboutUs"
-              className="text-black font-semibold text-[16px] hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
+              className="text-black font-semibold  hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
             >
               About Us
             </a>
 
             <a
               href="/ContactUs"
-              className="text-black font-semibold text-[16px] hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
+              className="text-black font-semibold  hover:text-blue-800 transition-colors duration-200 ease-in-out hover:underline"
             >
               Contact Us
             </a>
+            </div>
           </div>
 
           <div style={{ flexGrow: 1 }}></div>
 
-          <div className="flex items-center gap-6 text-white">
+          <div className="flex items-center gap-4 text-white text-[16px] w-60">
             {isLoading ? (
               <CircularProgress size={24} color="inherit" /> // Show loading spinner while fetching auth status
             ) : (
